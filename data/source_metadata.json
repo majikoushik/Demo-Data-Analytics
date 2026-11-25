@@ -1,0 +1,12 @@
+{
+  "source_url": "https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance",
+  "original_filename": "insurance.csv",
+  "download_date": "2023-10-01",
+  "description": "Healthcare insurance dataset for analysis and modeling",
+  "license_or_permission": "MIT License",
+  "permission_confirmed": true,
+  "currency_or_units": "Not stated by source",
+  "coverage": "true",
+  "raw_sha256": "388eff679557d08ac19f463d025de5e0b4adc482537c8456d19934d78621fd47",
+  "cleaned_sha256": "020bb10f783af681ab4bbf1560c142da1682e22e1c7e66fb13100b44fe4da23c"
+}
