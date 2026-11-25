@@ -1,0 +1,22 @@
+# Task 1 — Business case (1.1, 1.2)
+
+## 1.1 Applications of healthcare insurance analytics
+The audience is the fictional insurer's finance/planning team, operations leads and managers. These applications are researched possibilities, not results from the assigned CSV. AHRQ's Medical Expenditure Panel Survey (MEPS) illustrates the value of expenditure, utilization, coverage and demographic data [1]. CMS's electronic clinical quality measurement resources illustrate the additional structured clinical information required to measure quality [2].
+
+| Application | Method and data | Management decision and example | Benefit and limitation |
+|---|---|---|---|
+| Expense comparison | Group and summarize recorded charges by smoking, age band and region; mean, median, IQR, counts. This CSV supports these comparisons. | Finance can prioritize groups for further investigation and create sample-based expense scenarios. | Transparent and low cost; skew and unequal group sizes can mislead; no causal or temporal inference. |
+| Population grouping and resource planning | Descriptive segmentation by age bands and smoking. For actual staffing, additionally need enrollment counts, visits, service type, dates and capacity. | Operations could investigate whether outreach or staffing demand varies across groups. | Makes planning granular; sample composition is not enrollment or utilization, and small groups are unstable. |
+| Expense estimation | Regression or other predictive methods need historical charges, service dates, coverage, diagnoses and prior claims. | Finance could forecast aggregate expenditure and compare a model against a median or mean baseline. | May improve forecasts after out-of-sample evaluation; distribution drift, confounding and leakage can invalidate results. This CSV lacks time information, so it cannot validate a future-period forecast. |
+| Treatment effectiveness / quality | Compare outcomes, risk-adjusted readmission rates or quality measures using diagnoses, interventions, baseline risk, follow-up and outcome definitions [2]. | A clinical quality lead could investigate whether a care pathway is associated with fewer readmissions. | Supports quality improvement, but needs clinical data and study design to address selection bias. This CSV cannot evaluate treatment effectiveness. |
+
+## 1.2 Planning problem and opportunity
+Managers need to understand variation and uncertainty in recorded medical insurance charges to decide where further expenditure investigation is warranted. They need comprehensible comparisons, counts and transparent limitations, not a black-box pricing tool. Finance needs mean charges and spread for sample-based scenario planning; operations needs age and region segments; governance needs source permissions, reproducibility and appropriate aggregate use.
+
+- BQ1: How do charges differ by smoking status? Compare count, mean, median, spread, box plots and the mean difference. Investigate within age bands.
+- BQ2: How are age and BMI associated with charges overall and within smoking groups? Use scatter plots, Pearson correlations and group counts. Avoid treating category codes as quantities.
+- BQ3: How do means and medians vary across regions, and do patterns persist within smoking groups? Compare group counts, composition and stratified medians.
+
+A key data challenge is uncertain uniqueness: there is no identifier to establish that equal rows are duplicate people. Another is skew and unobserved clinical confounding. Preserve plausible high charges and matching rows, document exclusions and show both mean and median. Opportunity: a shared dashboard permits managers to compare relevant subgroups without rerunning Python. AI can help review ETL code, detect edge cases and draft narrative wording; a human must check outputs against independently calculated summaries. Future expense estimation could use a train/test split and baseline error comparison, then external/temporal validation on suitable data. Do not use this sample to assign individual prices or make claims about treatment.
+
+References (accessed 25 November 2026): [1] AHRQ, Medical Expenditure Panel Survey, https://www.ahrq.gov/data/meps.html. [2] CMS eCQI, FHIR overview for quality measurement, https://ecqi.healthit.gov/fhir/about. Assigned dataset: https://www.kaggle.com/datasets/willianoliveiragibin/healthcare-insurance (download and licence not verified in this environment).
