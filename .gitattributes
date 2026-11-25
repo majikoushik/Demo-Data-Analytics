@@ -1,0 +1,8 @@
+# Preserve exact CSV bytes for SHA-256 validation
+*.csv -text
+
+# Standardise line endings for source code
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.ipynb text eol=lf
